@@ -10,17 +10,17 @@ const ArticleCard = ({article }: ArticleType) => {
         <>
             <div>
                 <div className="shadow hover:shadow-xl rounded-lg group cursor-pointer">
-                    <a href="/blogs/new-post" className="cursor-pointer">
-                        <img src={article?.image || no_image} className="rounded-t-lg" />
+                    <a href="#" className="cursor-pointer h-32">
+                        <img src={article?.image || no_image} className="rounded-t-lg h-56 w-full object-cover" />
                     </a>
                     <div className="p-4 pb-6">
                         <a title={article?.title} href="/blogs/new-post" className="text-xl font-medium group-hover:text-blue-700 text-gray-700 truncate line-clamp-1">
                             {article?.title}
                         </a>
                         <p className="text-gray-400 text-sm line-clamp-3 my-3"> 
-                            {article?.content}
+                            {article?.content || article?.description}
                         </p>
-                        <a href="/blogs/new-post" className="bg-blue-600 text-sm text-white px-3 py-2 rounded">
+                        <a href="#" className="bg-blue-600 text-sm text-white px-3 py-2 rounded">
                             Read More
                         </a>
                     </div>
