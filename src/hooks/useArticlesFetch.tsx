@@ -5,7 +5,7 @@ import { ArticleProps, FilterProps } from "../types"
 import { useOnClickOutside } from "usehooks-ts"
 
 export const useArticleFetch = () => {
-    const url = "http://127.0.0.1:8000/api/articles/preferred"
+    const url = "http://127.0.0.1:8000/api/articles"
 
     const [articles, setArticles] = useState <ArticleProps[]>([])
     const [meta, setMeta] = useState({})
@@ -26,7 +26,7 @@ export const useArticleFetch = () => {
     }
 
     const handleFilter = ({ date, source}: FilterProps) => {
-        let filterParams = `date=${date}&source=${source}`
+        let filterParams = `date=${date || ''}&source=${source || ''}`
         // let filterParams = `date=${date}&category=${category}&source=${source}`
         getArticles(search ? `${url}?search=${search}&${filterParams}`: `${url}?${filterParams}`)
     }

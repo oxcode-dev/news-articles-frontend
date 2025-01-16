@@ -6,11 +6,14 @@ import { LoadingState } from "../components/LoadingState";
 import TitleHeading from "../components/TitleHeading";
 import { useArticleFetch } from "../hooks/useArticlesFetch";
 import Layout from "../layouts";
+import { useShared } from "../hooks/useShared";
 
 const ArticlesPage = () => {
     const { articles, isLoading, setSearch, handleChange, handleFilter,
         filterRef, showFilter, handleClickInside, handleResetFilter, meta, handlePagination
     } = useArticleFetch()    
+
+    const { sources } = useShared()
 
     const [date, setDate] = useState('')
     // const [category, setCategory] = useState('')
@@ -79,12 +82,14 @@ const ArticlesPage = () => {
                                                     <div>
                                                         <label className="text-sm text-gray-500 font-medium">Source</label>
                                                         <div className="">
-                                                            <input 
-                                                                type="text"
-                                                                value={source}
+                                                            <select 
                                                                 onChange={e => setSource(e.target.value)}
                                                                 className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" 
-                                                            />
+                                                            >
+                                                                {sources.map((list: string, key: number) => (
+                                                                    <option className="h-5" key={key}>{list}</option>
+                                                                ))}
+                                                            </select>
                                                         </div>
                                                     </div>
                                                     <div className="py&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-2">
@@ -97,7 +102,7 @@ const ArticlesPage = () => {
                                                     <div className="py-2">
                                                         <button 
                                                             onClick={() => handleResetFilter()} 
-                                                            type="button" className="text-gray-600 border rounded bg-gray-100 block w-full px-4 py-2 text-center text-sm"
+                                                            type="reset" className="text-gray-600 border rounded bg-gray-100 block w-full px-4 py-2 text-center text-sm"
                                                         >
                                                             Reset
                                                         </button>
