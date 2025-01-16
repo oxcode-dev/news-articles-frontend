@@ -25,7 +25,7 @@ export type RegisterProps = {
 }
 
 export type FilterProps = {
-    category: string,
+    // category: string,
     date: string
     source: string
 }

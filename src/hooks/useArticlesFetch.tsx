@@ -25,13 +25,20 @@ export const useArticleFetch = () => {
         getArticles(search ? `${url}?search=${search}`: url)
     }
 
-    const handleFilter = ({ date, category, source}: FilterProps) => {
-        let filterParams = `date=${date}&category=${category}&source=${source}`
+    const handleFilter = ({ date, source}: FilterProps) => {
+        let filterParams = `date=${date}&source=${source}`
+        // let filterParams = `date=${date}&category=${category}&source=${source}`
         getArticles(search ? `${url}?search=${search}&${filterParams}`: `${url}?${filterParams}`)
     }
 
     const handleResetFilter = () => {
         getArticles(search ? `${url}?search=${search}`: url)
+    }
+
+    const handlePagination = (url: string | null | undefined) => {
+        if(url) {
+            getArticles(url)
+        }
     }
 
     const getArticles = async(url: string) => {
@@ -58,6 +65,6 @@ export const useArticleFetch = () => {
     return {
         getArticles, articles, isLoading, meta, search, setSearch, handleChange,
         filterRef, showFilter, handleClickInside, handleClickOutside, handleResetFilter,
-        handleFilter
+        handleFilter, handlePagination,
     }
 }

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ArticleCard from "../components/ArticleCard";
 import EmptyState from "../components/EmptyState";
+import Pagination from "../components/Pagination";
 import { LoadingState } from "../components/LoadingState";
 import TitleHeading from "../components/TitleHeading";
 import { useArticleFetch } from "../hooks/useArticlesFetch";
@@ -8,15 +9,15 @@ import Layout from "../layouts";
 
 const ArticlesPage = () => {
     const { articles, isLoading, setSearch, handleChange, handleFilter,
-        filterRef, showFilter, handleClickInside, handleResetFilter,
+        filterRef, showFilter, handleClickInside, handleResetFilter, meta, handlePagination
     } = useArticleFetch()    
 
     const [date, setDate] = useState('')
-    const [category, setCategory] = useState('')
+    // const [category, setCategory] = useState('')
     const [source, setSource] = useState('')
 
     const handleFilterArticles = () => {
-        handleFilter({date, category, source})
+        handleFilter({date, source})
     }
 
     return (
@@ -64,7 +65,7 @@ const ArticlesPage = () => {
                                                              className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" 
                                                         />
                                                     </div>
-                                                    <div>
+                                                    {/* <div>
                                                         <label className="text-sm text-gray-500 font-medium">Category</label>
                                                         <div className="">
                                                             <input 
@@ -74,7 +75,7 @@ const ArticlesPage = () => {
                                                                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" 
                                                             />
                                                         </div>
-                                                    </div>
+                                                    </div> */}
                                                     <div>
                                                         <label className="text-sm text-gray-500 font-medium">Source</label>
                                                         <div className="">
@@ -112,7 +113,7 @@ const ArticlesPage = () => {
 
                     { isLoading ? <LoadingState /> : null }
 
-                    <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8 w-full py-8">
+                    <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-x-3 md:gap-x-8 gap-y-8 w-full py-8">
                         {
                             articles.map((list, key) => (
                                 <ArticleCard article={list} key={key} />
@@ -121,6 +122,13 @@ const ArticlesPage = () => {
                     </div>
 
                     { articles && articles.length === 0 && !isLoading ? <EmptyState /> : null }
+
+                    <div className="py-6">
+                        <Pagination 
+                            meta={meta}
+                            handlePagination={handlePagination}
+                        />
+                    </div>
                 </div>
             </Layout>
         </>
