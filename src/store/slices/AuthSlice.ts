@@ -6,6 +6,8 @@ type UserDataProps = {
     name: string,
     email: string,
     id: string,
+    author: string[],
+    sources: string[],
 }
 
 export interface AuthState {
@@ -34,10 +36,14 @@ export const AuthSlice = createSlice({
             state.user = action.payload.user;
             state.token = action.payload.token;
         },
+
+        updateUser(state, action: PayloadAction<UserDataProps>) {
+            state.user = action.payload;
+        },
     }
 })
 
-export const { reset, setAuthState } = AuthSlice.actions
+export const { reset, setAuthState, updateUser } = AuthSlice.actions
 
 
 export const getUserToken = (state: AuthState) => state.token

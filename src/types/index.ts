@@ -24,6 +24,14 @@ export type RegisterProps = {
     last_name: string
 }
 
+export type UserDetailsProps = {
+    email: string,
+    first_name: string,
+    last_name: string,
+    authors: string[],
+    sources: string[],
+}
+
 export type FilterProps = {
     // category: string,
     date: string
