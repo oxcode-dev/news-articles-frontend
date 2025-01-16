@@ -1,7 +1,9 @@
 import TitleHeading from "../components/TitleHeading";
+import { useShared } from "../hooks/useShared";
 import Layout from "../layouts";
 
 const UserSettingsPage = () => {
+    const { isLoading } = useShared()
     
     return (
         <>
