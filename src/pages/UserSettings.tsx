@@ -1,9 +1,14 @@
+import { useSelector } from "react-redux";
 import TitleHeading from "../components/TitleHeading";
 import { useShared } from "../hooks/useShared";
 import Layout from "../layouts";
+import MultiSelectDropdown from "../components/MultiSelectDropdown";
 
 const UserSettingsPage = () => {
-    const { isLoading } = useShared()
+    const { authors, sources } = useShared()
+
+    // @ts-ignore
+    const users = useSelector(state => !!state.auth.users)
     
     return (
         <>
@@ -47,6 +52,16 @@ const UserSettingsPage = () => {
                             />
                         </div>
 
+                        <div>
+                            <label className="text-sm text-gray-600 font-medium">Authors</label>
+                            <MultiSelectDropdown formFieldName={"author"} options={authors} />
+                        </div>
+
+                        <div>
+                            <label className="text-sm text-gray-600 font-medium">Sources</label>
+                            <MultiSelectDropdown formFieldName={"source"} options={sources} />
+                        </div>
+
                         <div className="space-y-4 py-2">
                             <button
                                 type="submit"
@@ -57,6 +72,14 @@ const UserSettingsPage = () => {
                                 Save
                             </button>
                         </div>
+
+                        {/* <select >
+                            {authors.map((list: string, key: number) => (
+                                <option key={key}>{list}</option>
+                            ))}
+                        </select> */}
+
+
                     </div>
                 </div>
                 

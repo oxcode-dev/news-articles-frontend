@@ -20,6 +20,7 @@ export const SharedSlice = createSlice({
 
         // Action to set the authentication status
         setSharedState(state, action: PayloadAction<SharedState>) {
+            console.log(action.payload.authors)
             state.sources = action.payload.sources;
             state.authors = action.payload.authors;
         },
