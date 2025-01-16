@@ -16,6 +16,16 @@ export const post = async (url, token, data) => {
 
     return makeRequest(config);
 }
+// @ts-ignore
+export const postWithoutToken = async (url, data) => {
+    const config = {
+        method: 'POST',
+        url: url,
+        data: data,
+    };
+
+    return makeRequest(config);
+}
 
 // @ts-ignore
 export const put = async (url, token, data) => {

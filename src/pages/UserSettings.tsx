@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import TitleHeading from "../components/TitleHeading";
 import { useShared } from "../hooks/useShared";
 import Layout from "../layouts";
-import MultiSelectDropdown from "../components/MultiSelectDropdown";
+// import MultiSelectDropdown from "../components/MultiSelectDropdown";
 
 const UserSettingsPage = () => {
     const { authors, sources } = useShared()
@@ -17,9 +17,8 @@ const UserSettingsPage = () => {
                     title="User Settings"
                     heading="Update Your Details and Preference."
                 />
-
                 
-                <div className="container mx-auto md:px-0 px-4 py-10 md:py-16">
+                <form className="container mx-auto md:px-0 px-4 py-10 md:py-16">
                     <div className="w-full md:max-w-xl flex flex-col space-y-4 pb-12">
                         <div className={`${false ? 'flex' : 'hidden'} text-red-600 text-sm font-medium bg-red-50 shadow-md p-4`}>
                             {/* {error || 'error'} */}
@@ -48,18 +47,33 @@ const UserSettingsPage = () => {
                                 type="email"
                                 // value={email}
                                 // onChange={e => setEmail(e.target.value)}
-                                required className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" 
+                                required 
+                                className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" 
                             />
                         </div>
 
                         <div>
                             <label className="text-sm text-gray-600 font-medium">Authors</label>
-                            <MultiSelectDropdown formFieldName={"author"} options={authors} />
+                            <select 
+                                multiple
+                                className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" 
+                            >
+                                {authors.map((list: string, key: number) => (
+                                    <option className="h-5" key={key}>{list}</option>
+                                ))}
+                            </select>
                         </div>
 
                         <div>
                             <label className="text-sm text-gray-600 font-medium">Sources</label>
-                            <MultiSelectDropdown formFieldName={"source"} options={sources} />
+                            <select 
+                                multiple
+                                className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" 
+                            >
+                                {sources.map((list: string, key: number) => (
+                                    <option className="h-5" key={key}>{list}</option>
+                                ))}
+                            </select>
                         </div>
 
                         <div className="space-y-4 py-2">
@@ -73,15 +87,8 @@ const UserSettingsPage = () => {
                             </button>
                         </div>
 
-                        {/* <select >
-                            {authors.map((list: string, key: number) => (
-                                <option key={key}>{list}</option>
-                            ))}
-                        </select> */}
-
-
                     </div>
-                </div>
+                </form>
                 
             </Layout>
         </>
