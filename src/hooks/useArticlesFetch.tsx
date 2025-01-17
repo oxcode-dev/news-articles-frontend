@@ -4,7 +4,7 @@ import { getWithoutToken } from "../services/APIService"
 import { ArticleProps, FilterProps } from "../types"
 import { useOnClickOutside } from "usehooks-ts"
 
-export const useArticleFetch = () => {
+export const useArticlesFetch = () => {
     const baseUrl = import.meta.env.VITE_API_URL;
     const url = `${baseUrl}/api/articles`
 

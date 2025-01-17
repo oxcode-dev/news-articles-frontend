@@ -4,14 +4,14 @@ import EmptyState from "../components/EmptyState";
 import Pagination from "../components/Pagination";
 import { LoadingState } from "../components/LoadingState";
 import TitleHeading from "../components/TitleHeading";
-import { useArticleFetch } from "../hooks/useArticlesFetch";
+import { useArticlesFetch } from "../hooks/useArticlesFetch";
 import Layout from "../layouts";
 import { useShared } from "../hooks/useShared";
 
 const ArticlesPage = () => {
     const { articles, isLoading, setSearch, handleChange, handleFilter,
         filterRef, showFilter, handleClickInside, handleResetFilter, meta, handlePagination
-    } = useArticleFetch()    
+    } = useArticlesFetch()    
 
     const { sources } = useShared()
 

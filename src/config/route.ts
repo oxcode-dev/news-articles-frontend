@@ -3,6 +3,7 @@ import ArticlesPage from "../pages/Articles";
 import UserSettingsPage from "../pages/UserSettings";
 import PreferredArticlesPage from "../pages/PreferredArticles";
 import ArticlePage from "../pages/Article";
+import NotFoundPage from "../pages/NotFound";
 
 const routes = [
     { path: "/auth", element: AuthPage, isAuthenticated: false },
@@ -12,7 +13,7 @@ const routes = [
     { path: "/preferred-articles", element: PreferredArticlesPage, isAuthenticated: false },
     { path: "/settings", element: UserSettingsPage, isAuthenticated: false },
 
-    // { path: "*", element: NotFoundPage, isPublic: true },
+    { path: "*", element: NotFoundPage },
 ];
 
 export default routes;

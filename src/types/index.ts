@@ -7,6 +7,7 @@ export type ArticleProps = {
     id: number,
     title: string,
     image?: string,
+    source?: string,
     published_at?: string,
     url?: string,
     updated_at: string,
