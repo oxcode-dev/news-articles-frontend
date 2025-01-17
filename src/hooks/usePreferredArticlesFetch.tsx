@@ -3,7 +3,7 @@ import { isEmpty, o_O } from "../helper"
 import { getWithoutToken } from "../services/APIService"
 import { ArticleProps } from "../types"
 
-export const useArticleFetch = () => {
+export const usePreferredArticlesFetch = () => {
     const url = "http://127.0.0.1:8000/api/articles/preferred"
 
     const [articles, setArticles] = useState <ArticleProps[]>([])

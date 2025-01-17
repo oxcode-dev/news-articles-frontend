@@ -22,20 +22,25 @@ export default function Pagination({ meta, handlePagination } : PaginationProps)
                 </p>
             </div>
             <div className="flex flex-1 justify-between sm:justify-end">
-                <a
-                    onClick={() => handlePagination(meta?.prev_page_url)}
-                    href="#"
-                    className="relative inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline-offset-0"
-                >
-                    Previous
-                </a>
-                <a
-                    href="#"
-                    onClick={() => handlePagination(meta?.next_page_url)}
-                    className="relative ml-3 inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline-offset-0"
-                >
-                    Next
-                </a>
+                {meta?.prev_page_url ? 
+                    <a
+                        onClick={() => handlePagination(meta?.prev_page_url)}
+                        href="#"
+                        className="relative inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline-offset-0"
+                    >
+                        Previous
+                    </a> : null
+                }
+                {meta?.next_page_url ? 
+                    <a
+                        href="#"
+                        onClick={() => handlePagination(meta?.next_page_url)}
+                        className="relative ml-3 inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline-offset-0"
+                    >
+                        Next
+                    </a>
+                    : null
+                }
             </div>
         </nav>
     )

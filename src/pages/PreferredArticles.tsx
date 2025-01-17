@@ -1,13 +1,14 @@
 import ArticleCard from "../components/ArticleCard";
 import EmptyState from "../components/EmptyState";
 import { LoadingState } from "../components/LoadingState";
+import Pagination from "../components/Pagination";
 import TitleHeading from "../components/TitleHeading";
-import { useArticleFetch } from "../hooks/useArticlesFetch";
+import { usePreferredArticlesFetch } from "../hooks/usePreferredArticlesFetch";
 import Layout from "../layouts";
 
 const PreferredArticlesPage = () => {
-    const { articles, isLoading, setSearch, handleChange } 
-    = useArticleFetch()    
+    const { articles, isLoading, setSearch, handleChange, meta, handlePagination } 
+    = usePreferredArticlesFetch()    
 
     return (
         <>
@@ -44,6 +45,13 @@ const PreferredArticlesPage = () => {
                     </div>
 
                     { articles && articles.length === 0 && !isLoading ? <EmptyState /> : null }
+
+                    <div className="py-6">
+                        <Pagination
+                            meta={meta}
+                            handlePagination={handlePagination}
+                        />
+                    </div>
                 </div>
             </Layout>
         </>
