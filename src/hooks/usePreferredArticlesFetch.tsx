@@ -4,7 +4,9 @@ import { getWithoutToken } from "../services/APIService"
 import { ArticleProps } from "../types"
 
 export const usePreferredArticlesFetch = () => {
-    const url = "http://127.0.0.1:8000/api/articles/preferred"
+    const baseUrl = import.meta.env.VITE_API_URL;
+
+    const url = `${baseUrl}/api/articles/preferred`
 
     const [articles, setArticles] = useState <ArticleProps[]>([])
     const [meta, setMeta] = useState({})

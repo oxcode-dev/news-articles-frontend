@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setSharedState } from "../store/slices/SharedSlice";
 
 export const useShared = () => {
-    const url = "http://127.0.0.1:8000/api/articles/sources"
+    const baseUrl = import.meta.env.VITE_API_URL;
+    const url = `${baseUrl}/api/articles/sources`
 
     const dispatch = useDispatch()
     // @ts-ignore

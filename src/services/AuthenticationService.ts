@@ -1,10 +1,11 @@
 import axios from "axios";
 import { LoginProps, RegisterProps, UserDetailsProps } from "../types";
 
-const loginUrl = "http://127.0.0.1:8000/api/login"
-const logoutUrl = "http://127.0.0.1:8000/api/logout"
-const registerUrl = "http://127.0.0.1:8000/api/register"
-const userUpdateUrl = "http://127.0.0.1:8000/api/user-settings"
+const baseUrl = import.meta.env.VITE_API_URL;
+const loginUrl = `${baseUrl}/api/login`
+const logoutUrl = `${baseUrl}/api/logout`
+const registerUrl = `${baseUrl}/api/register`
+const userUpdateUrl = `${baseUrl}/api/user-settings`
 
 const AuthenticationService = {
     signin: async({email, password} : LoginProps) => {
