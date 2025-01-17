@@ -8,10 +8,10 @@ import NotFoundPage from "../pages/NotFound";
 const routes = [
     { path: "/auth", element: AuthPage, isAuthenticated: false },
 
-    { path: "/", element: ArticlesPage, isAuthenticated: false },
-    { path: "/articles/:id", element: ArticlePage, isAuthenticated: false },
-    { path: "/preferred-articles", element: PreferredArticlesPage, isAuthenticated: false },
-    { path: "/settings", element: UserSettingsPage, isAuthenticated: false },
+    { path: "/", element: ArticlesPage, isAuthenticated: true },
+    { path: "/articles/:id", element: ArticlePage, isAuthenticated: true },
+    { path: "/preferred-articles", element: PreferredArticlesPage, isAuthenticated: true },
+    { path: "/settings", element: UserSettingsPage, isAuthenticated: true },
 
     { path: "*", element: NotFoundPage },
 ];
