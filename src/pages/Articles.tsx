@@ -108,10 +108,12 @@ const ArticlesPage = () => {
 
                     { isLoading ? <LoadingState /> : null }
 
-                    <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-x-3 md:gap-x-8 gap-y-8 w-full py-8">
+                    <div className="flex flex-wrap w-full py-8">
                         {
                             articles.map((list, key) => (
-                                <ArticleCard article={list} key={key} />
+                                <div key={key} className="w-full sm:w-1/2 md:w-1/3 px-4 py-4">
+                                    <ArticleCard article={list} />
+                                </div>
                             ))
                         }
                     </div>

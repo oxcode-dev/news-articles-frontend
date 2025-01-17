@@ -36,10 +36,12 @@ const PreferredArticlesPage = () => {
 
                     { isLoading ? <LoadingState /> : null }
 
-                    <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8 w-full py-8">
+                    <div className="flex flex-wrap md:flex-nowrap w-full py-8">
                         {
                             articles.map((list, key) => (
-                                <ArticleCard article={list} key={key} />
+                                <div key={key} className="w-full sm:w-1/2 md:w-1/3 px-4 py-4">
+                                    <ArticleCard article={list} />
+                                </div>
                             ))
                         }
                     </div>
